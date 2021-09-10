@@ -1,0 +1,48 @@
+# VariantHunter Version 0.5.0 
+####################################################################################
+
+ref_path: "data/ResFinder_20200125"   # Path to reference fasta file.
+
+sample_name_path: "data/gs2_first_35_sample_names.txt"      # Path to list of sample names. One line per name. 
+
+seq_path: "/home/projects/cge/data/projects/5001/Sewage_data_symbolic_links/Trimmed/"    # Path to folder with trimmed illumina paired end fastq sequences
+
+singleton_suf: "_R1.singletons.fq.gz" # What comes after sample name for singletons
+
+for_rev_suf: "_R*.trim.fq.gz"         # What comes after sample name for forward og reverse reads. Use * to indicate a 1 or a 2.
+
+conclave_verson: "2"                  # Choose "1" or "2". Read about ConClave in KMA manual.
+
+alignment_setting_for_kma:  "-cge"    # Default: "". Settings ideal for ResFinder database: "-cge". Custom, for example: "-reward 1 -penalty -3 -gapopen -5 -gapextend -1 -per 17 -mrs 0.75". 
+
+###################################################################################
+## PARAMETERS BELOW THIS LINE AFFECTS STEP 3, 4, 5 ONLY ###########################
+###################################################################################
+
+minimum_base_Q: "20"                  # E.g. "20". Minimum base quality. Phred scaled.
+
+p_value: "0.50"                       # E.g. "0.75". Minimum allele frequency to accept Reference allele. Allele depth and strand bias is not concided for reference alleles.
+
+orphan_reads: ""                      # Include "orphan" reads? (Orphan =  mate is not paired) For yes "-A" , for no "".
+
+minimum_map_Q: "20"                   # E.g. "20". Minimum mapping quality. Phred scaled.
+
+min_ALT_strand_prop_F_and_R: "0.1"    # E.g. "0.2". Minimum proportion of  forward and reverse for ALT  alleles.
+
+minimum_ALT_AD: "2"                  # E.g. "10". Minimum alle depth for non-reference allele to be accepted.
+
+minimum_ALT_AF: "0.50"                # E.g. "0.90". Minimum allele frequency for non-reference allele to be accepted.
+
+min_template_cov: "98"                # E.g. "98". Minimum template coverage in percent. Threashold of "high coverage".
+
+min_meandepth: "1"                   # Minimum mean depth of sequence. For example "10". 
+
+percentage_unknown_nuc_allowed: "0"   # E.g. "0" or "10". The percentage of "N" allowed in sequences.
+
+cluster_identity_cd_hit: "0.95"       # E.g. "0.95". See https://github.com/weizhongli/cdhit/wiki/3.-User's-Guide#CDHITEST
+
+cluster_wordsize_cd_hit: "9"          # E.g. "9". See https://github.com/weizhongli/cdhit/wiki/3.-User's-Guide#CDHITEST
+
+minimum_cluster_size: "2"             # minimum 2. Written as "2".
+
+snp_dists_options: "-a"               # Count only actual SNPS (ATCG): "". Count also gaps (indels): "-a". See https://github.com/tseemann/snp-dists 
